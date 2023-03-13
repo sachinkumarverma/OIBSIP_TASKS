@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>To-Do App</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <header>
+      <h1>To-Do WebApp</h1>
+    </header>
+
+    <div class="container">
+      <form>
+        <input type="text" id="taskInput" placeholder="Add Your Task...">
+        <button type="Submit" onclick="addTask(event)">Add</button>
+      </form>
+
+      <div class="pending-tasks">
+        <h2>Pending Tasks (<span id="pendingCount"></span>)</h2>
+        <ul id="pendingTasks"></ul>
+      </div>
+      <div class="completed-tasks">
+        <h2>Completed Tasks (<span id="completedCount"></span>)</h2>
+        <ul id="completedTasks"></ul>
+      </div>
+    </div> 
+    <footer>
+      <h3>Created by - Sachin Kumar Verma</h3>
+    </footer>
+
+  </body>
+</html>
+
+<script src="script.js"></script>

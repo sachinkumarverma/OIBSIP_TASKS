@@ -1,0 +1,140 @@
+/* Body styles */
+body {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  margin: 0;
+  padding: 0;
+  background-color: yellow;
+  padding-bottom: 50px;
+}
+
+/* Header styles */
+header {
+  background-color: black;
+  color: greenyellow;
+  padding: 5px;
+  text-align: center;
+}
+
+h1 {
+  margin: 5px;
+  font-size: 35px;
+}
+
+/* Container styles */
+.container {
+  margin: 20px auto;
+  max-width: 80%;
+  background-color: #1017e0;
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 60px;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    padding-right: 10px;
+  }
+}
+
+/* Form styles */
+form {
+  display: flex;
+}
+
+input{
+  flex: 1;
+  padding: 18px;
+  margin: 10px;
+  border: 5px solid red;
+  border-radius: 25px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+button{
+  max-width: 100px;
+  width: 90%;
+  background-color: #ff0000;
+  color: white;
+  border: 5px solid black;
+  border-radius: 25px;
+  padding: 18px;
+  margin: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight:bold;
+}
+
+/* Task list styles */
+ul {
+  padding: 0;
+}
+
+li {
+  padding: 0 15px;
+  background-color: #000000;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li .task {
+  flex: 1;
+  margin-right: 50px;
+  word-wrap: break-word; /* wrap long text */
+}
+
+li button {
+  background-color: red;
+  color: white;
+  border: 3px solid black;
+  border-radius: 25px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+/* Pending tasks styles */
+.pending-tasks {
+  text-align: center;
+  margin-top: -25px;
+  margin-bottom: -35px;
+  padding: 15px;
+  color: #fbff00;
+}
+
+.pending-tasks li {
+  background-color: #5cf5ff;
+  color: #000000;
+  font-weight: bold;
+  
+}
+
+.completed-tasks {
+  text-align: center;
+  margin-top: -35px;
+  margin-bottom: -35px;
+  padding: 15px;
+  color: #fbff00;
+}
+
+.completed-tasks li {
+  background-color: #5cf5ff;
+  color: #000000;
+  font-weight: bold;
+}
+
+footer{
+  width: 100%;
+  background-color: black;
+  color: greenyellow;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+}
+
+footer h3{
+  margin: 10px 0;
+}
