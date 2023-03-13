@@ -12,12 +12,14 @@ function addTask(e) {
 
   if (task) {
     let now = new Date();
-    let taskWithTime = {
-      task: task,
-      added: now.toLocaleString(),
-      completed: null,
-      pending: null,
-    };
+let dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+let timeOptions = { hour: 'numeric', minute: 'numeric', second: 'numeric' };
+let taskWithTime = {
+  task: task,
+  added: now.toLocaleDateString('en-US', dateOptions) + ' ' + now.toLocaleTimeString('en-US', timeOptions),
+  completed: null,
+  pending: null,
+};
 
     pendingTasks.push(taskWithTime);
     taskInput.value = "";
