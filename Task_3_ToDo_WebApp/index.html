@@ -1,36 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>To-Do App</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskFlow - To-Do App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-  <body>
+  <!-- Animated Background -->
+  <div class="bg-animation">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="orb orb-4"></div>
+    <div class="orb orb-5"></div>
+  </div>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- Toast Container -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <div class="app">
+    <!-- Header -->
     <header>
-      <h1>To-Do WebApp</h1>
+      <div class="header-left">
+        <span class="material-symbols-rounded header-icon">checklist</span>
+        <div>
+          <h1>TaskFlow</h1>
+          <p class="header-sub">Organize your day, your way</p>
+        </div>
+      </div>
+      <div class="task-stats">
+        <div class="stat">
+          <span class="stat-num" id="pendingCount">0</span>
+          <span class="stat-label">Pending</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" id="completedCount">0</span>
+          <span class="stat-label">Done</span>
+        </div>
+      </div>
     </header>
 
-    <div class="container">
-      <form>
-        <input type="text" id="taskInput" placeholder="Add Your Task...">
-        <button type="Submit" onclick="addTask(event)">Add</button>
-      </form>
+    <!-- Progress Bar -->
+    <div class="progress-wrapper">
+      <span class="progress-label">Progress</span>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <span class="progress-text" id="progressText">0%</span>
+    </div>
 
-      <div class="pending-tasks">
-        <h2>Pending Tasks (<span id="pendingCount"></span>)</h2>
-        <ul id="pendingTasks"></ul>
+    <!-- Add Task Section -->
+    <form class="task-form" onsubmit="addTask(event)">
+      <div class="form-section-label">
+        <span class="material-symbols-rounded">edit_note</span>
+        Add a new task
       </div>
-      <div class="completed-tasks">
-        <h2>Completed Tasks (<span id="completedCount"></span>)</h2>
-        <ul id="completedTasks"></ul>
+
+      <div class="input-row">
+        <div class="input-wrapper">
+          <input type="text" id="taskInput" placeholder="e.g. Buy groceries, Finish report..." autocomplete="off">
+        </div>
+        <button type="submit" class="add-btn">
+          <span class="material-symbols-rounded">add</span>
+          Add Task
+        </button>
       </div>
-    </div> 
+
+      <div class="input-options">
+        <div class="option-group">
+          <span class="option-label">Priority:</span>
+          <div class="priority-picker" id="priorityPicker">
+            <button type="button" class="priority-btn active" data-priority="none">None</button>
+            <button type="button" class="priority-btn low" data-priority="low">
+              <span class="priority-dot low-dot"></span> Low
+            </button>
+            <button type="button" class="priority-btn medium" data-priority="medium">
+              <span class="priority-dot medium-dot"></span> Medium
+            </button>
+            <button type="button" class="priority-btn high" data-priority="high">
+              <span class="priority-dot high-dot"></span> High
+            </button>
+          </div>
+        </div>
+        <div class="option-group">
+          <span class="option-label">Due date:</span>
+          <div class="due-date-wrapper" onclick="document.getElementById('dueDateInput').showPicker()">
+            <span class="material-symbols-rounded due-icon">calendar_today</span>
+            <input type="date" id="dueDateInput" class="due-date-input">
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <!-- Search & Filter Section -->
+    <div class="controls-section">
+      <div class="search-bar">
+        <span class="material-symbols-rounded search-icon">search</span>
+        <input type="text" id="searchInput" placeholder="Search tasks..." autocomplete="off">
+        <button class="search-clear" id="searchClear" style="display:none">
+          <span class="material-symbols-rounded">close</span>
+        </button>
+      </div>
+
+      <div class="filter-row">
+        <div class="filter-tabs">
+          <button class="filter-tab active" data-filter="all">All Tasks</button>
+          <button class="filter-tab" data-filter="pending">Pending</button>
+          <button class="filter-tab" data-filter="completed">Completed</button>
+        </div>
+        <button class="clear-done-btn" id="clearDoneBtn" title="Clear all completed tasks">
+          <span class="material-symbols-rounded">delete_sweep</span>
+          Clear completed
+        </button>
+      </div>
+    </div>
+
+    <!-- Task List -->
+    <div class="task-list" id="taskList">
+      <div class="empty-state" id="emptyState">
+        <span class="material-symbols-rounded empty-icon">task_alt</span>
+        <p class="empty-title">No tasks yet</p>
+        <p class="empty-sub">Add your first task above to get started!</p>
+      </div>
+    </div>
+
+    <!-- Footer -->
     <footer>
-      <h3>Created by - Sachin Kumar Verma</h3>
+      <p>Created by <strong>Sachin Kumar Verma</strong></p>
     </footer>
+  </div>
 
-  </body>
+  <script src="script.js"></script>
+</body>
 </html>
-
-<script src="script.js"></script>

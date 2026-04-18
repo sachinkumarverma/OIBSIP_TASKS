@@ -2,57 +2,212 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator Pro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet">
   <link href="style.css" rel="stylesheet" type="text/css" />
-  <link href="utils.css" rel="stylesheet" type="text/css" />
 </head>
-  
-  <h1 class="text-center"> Calculator</h1>
-  <div class="container flex flex-coln items-center mx-auto">
-  <div class="row">
-    <input class="input" type="text"/>
+<body>
+
+  <div class="app">
+    <!-- Tabs -->
+    <nav class="tabs">
+      <button class="tab active" data-tab="basic">Basic</button>
+      <button class="tab" data-tab="scientific">Scientific</button>
+      <button class="tab" data-tab="length">Length</button>
+      <button class="tab" data-tab="weight">Weight</button>
+      <button class="tab" data-tab="temperature">Temp</button>
+    </nav>
+
+    <!-- ==================== BASIC CALCULATOR ==================== -->
+    <section class="panel active" id="basic">
+      <div class="display">
+        <div class="expression" id="basic-expression"></div>
+        <input class="input" id="basic-input" type="text" placeholder="0" readonly />
+      </div>
+      <div class="buttons-grid basic-grid">
+        <button class="btn fn" data-action="clear">AC</button>
+        <button class="btn fn" data-action="delete">DEL</button>
+        <button class="btn fn" data-action="percent">%</button>
+        <button class="btn op" data-action="append" data-value="/">&divide;</button>
+
+        <button class="btn num" data-action="append" data-value="7">7</button>
+        <button class="btn num" data-action="append" data-value="8">8</button>
+        <button class="btn num" data-action="append" data-value="9">9</button>
+        <button class="btn op" data-action="append" data-value="*">&times;</button>
+
+        <button class="btn num" data-action="append" data-value="4">4</button>
+        <button class="btn num" data-action="append" data-value="5">5</button>
+        <button class="btn num" data-action="append" data-value="6">6</button>
+        <button class="btn op" data-action="append" data-value="-">&minus;</button>
+
+        <button class="btn num" data-action="append" data-value="1">1</button>
+        <button class="btn num" data-action="append" data-value="2">2</button>
+        <button class="btn num" data-action="append" data-value="3">3</button>
+        <button class="btn op" data-action="append" data-value="+">+</button>
+
+        <button class="btn num" data-action="append" data-value="00">00</button>
+        <button class="btn num" data-action="append" data-value="0">0</button>
+        <button class="btn num" data-action="append" data-value=".">.</button>
+        <button class="btn equals" data-action="evaluate">=</button>
+      </div>
+    </section>
+
+    <!-- ==================== SCIENTIFIC CALCULATOR ==================== -->
+    <section class="panel" id="scientific">
+      <div class="display">
+        <div class="expression" id="sci-expression"></div>
+        <input class="input" id="sci-input" type="text" placeholder="0" readonly />
+      </div>
+      <div class="buttons-grid sci-grid">
+        <button class="btn fn-sci" data-action="sci" data-value="sin">sin</button>
+        <button class="btn fn-sci" data-action="sci" data-value="cos">cos</button>
+        <button class="btn fn-sci" data-action="sci" data-value="tan">tan</button>
+        <button class="btn fn-sci" data-action="sci" data-value="log">log</button>
+        <button class="btn fn-sci" data-action="sci" data-value="ln">ln</button>
+
+        <button class="btn fn-sci" data-action="sci" data-value="sqrt">&radic;</button>
+        <button class="btn fn-sci" data-action="sci" data-value="square">x&sup2;</button>
+        <button class="btn fn-sci" data-action="sci" data-value="cube">x&sup3;</button>
+        <button class="btn fn-sci" data-action="append" data-value="(">(</button>
+        <button class="btn fn-sci" data-action="append" data-value=")">)</button>
+
+        <button class="btn fn-sci" data-action="sci" data-value="pi">&pi;</button>
+        <button class="btn fn-sci" data-action="sci" data-value="e">e</button>
+        <button class="btn fn-sci" data-action="sci" data-value="pow">x<sup>y</sup></button>
+        <button class="btn fn-sci" data-action="sci" data-value="factorial">n!</button>
+        <button class="btn fn-sci" data-action="sci" data-value="reciprocal">1/x</button>
+
+        <button class="btn fn" data-action="clear">AC</button>
+        <button class="btn fn" data-action="delete">DEL</button>
+        <button class="btn fn" data-action="percent">%</button>
+        <button class="btn op" data-action="append" data-value="/">&divide;</button>
+        <button class="btn op" data-action="append" data-value="*">&times;</button>
+
+        <button class="btn num" data-action="append" data-value="7">7</button>
+        <button class="btn num" data-action="append" data-value="8">8</button>
+        <button class="btn num" data-action="append" data-value="9">9</button>
+        <button class="btn op" data-action="append" data-value="-">&minus;</button>
+        <button class="btn op" data-action="append" data-value="+">+</button>
+
+        <button class="btn num" data-action="append" data-value="4">4</button>
+        <button class="btn num" data-action="append" data-value="5">5</button>
+        <button class="btn num" data-action="append" data-value="6">6</button>
+        <button class="btn num" data-action="append" data-value="1">1</button>
+        <button class="btn num" data-action="append" data-value="2">2</button>
+
+        <button class="btn num" data-action="append" data-value="3">3</button>
+        <button class="btn num" data-action="append" data-value="0">0</button>
+        <button class="btn num" data-action="append" data-value=".">.</button>
+        <button class="btn num" data-action="append" data-value="00">00</button>
+        <button class="btn equals" data-action="evaluate">=</button>
+      </div>
+    </section>
+
+    <!-- ==================== LENGTH CONVERTER ==================== -->
+    <section class="panel" id="length">
+      <div class="converter">
+        <h2 class="converter-title">Length Converter</h2>
+        <div class="converter-group">
+          <label>From</label>
+          <input type="number" id="length-from" class="converter-input" placeholder="Enter value">
+          <select id="length-from-unit" class="converter-select">
+            <option value="m">Meter (m)</option>
+            <option value="km">Kilometer (km)</option>
+            <option value="cm">Centimeter (cm)</option>
+            <option value="mm">Millimeter (mm)</option>
+            <option value="mi">Mile (mi)</option>
+            <option value="yd">Yard (yd)</option>
+            <option value="ft">Foot (ft)</option>
+            <option value="in">Inch (in)</option>
+          </select>
+        </div>
+        <button class="swap-btn" id="length-swap">
+          <span class="material-symbols-rounded">swap_vert</span>
+        </button>
+        <div class="converter-group">
+          <label>To</label>
+          <input type="text" id="length-to" class="converter-input" placeholder="Result" readonly>
+          <select id="length-to-unit" class="converter-select">
+            <option value="ft">Foot (ft)</option>
+            <option value="m">Meter (m)</option>
+            <option value="km">Kilometer (km)</option>
+            <option value="cm">Centimeter (cm)</option>
+            <option value="mm">Millimeter (mm)</option>
+            <option value="mi">Mile (mi)</option>
+            <option value="yd">Yard (yd)</option>
+            <option value="in">Inch (in)</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== WEIGHT CONVERTER ==================== -->
+    <section class="panel" id="weight">
+      <div class="converter">
+        <h2 class="converter-title">Weight Converter</h2>
+        <div class="converter-group">
+          <label>From</label>
+          <input type="number" id="weight-from" class="converter-input" placeholder="Enter value">
+          <select id="weight-from-unit" class="converter-select">
+            <option value="kg">Kilogram (kg)</option>
+            <option value="g">Gram (g)</option>
+            <option value="mg">Milligram (mg)</option>
+            <option value="lb">Pound (lb)</option>
+            <option value="oz">Ounce (oz)</option>
+            <option value="t">Metric Ton (t)</option>
+          </select>
+        </div>
+        <button class="swap-btn" id="weight-swap">
+          <span class="material-symbols-rounded">swap_vert</span>
+        </button>
+        <div class="converter-group">
+          <label>To</label>
+          <input type="text" id="weight-to" class="converter-input" placeholder="Result" readonly>
+          <select id="weight-to-unit" class="converter-select">
+            <option value="lb">Pound (lb)</option>
+            <option value="kg">Kilogram (kg)</option>
+            <option value="g">Gram (g)</option>
+            <option value="mg">Milligram (mg)</option>
+            <option value="oz">Ounce (oz)</option>
+            <option value="t">Metric Ton (t)</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TEMPERATURE CONVERTER ==================== -->
+    <section class="panel" id="temperature">
+      <div class="converter">
+        <h2 class="converter-title">Temperature Converter</h2>
+        <div class="converter-group">
+          <label>From</label>
+          <input type="number" id="temp-from" class="converter-input" placeholder="Enter value">
+          <select id="temp-from-unit" class="converter-select">
+            <option value="C">Celsius (&deg;C)</option>
+            <option value="F">Fahrenheit (&deg;F)</option>
+            <option value="K">Kelvin (K)</option>
+          </select>
+        </div>
+        <button class="swap-btn" id="temp-swap">
+          <span class="material-symbols-rounded">swap_vert</span>
+        </button>
+        <div class="converter-group">
+          <label>To</label>
+          <input type="text" id="temp-to" class="converter-input" placeholder="Result" readonly>
+          <select id="temp-to-unit" class="converter-select">
+            <option value="F">Fahrenheit (&deg;F)</option>
+            <option value="C">Celsius (&deg;C)</option>
+            <option value="K">Kelvin (K)</option>
+          </select>
+        </div>
+      </div>
+    </section>
   </div>
 
-  <div class="row">
-    <button class="button">(</button>
-    <button class="button">)</button>
-    <button class="button">C</button>
-    <button class="button">DEL</button>
-    <button class="button">1/x</button>
-  </div>
-  <div class="row">
-    <button class="button">7</button>
-    <button class="button">8</button>
-    <button class="button">9</button>
-    <button class="button">+</button>
-    <button class="button">%</button>
-  </div>
-  <div class="row">
-    <button class="button">4</button>
-    <button class="button">5</button>
-    <button class="button">6</button>
-    <button class="button">-</button>
-    <button class="button">π</button>
-  </div>
-  <div class="row">
-    <button class="button">1</button>
-    <button class="button">2</button>
-    <button class="button">3</button>
-    <button class="button">X</button>
-    <button class="button">e</button>
-  </div>
-  <div class="row">
-    <button class="button">0</button>
-    <button class="button">00</button>
-    <button class="button">.</button>
-    <button class="button">/</button>
-    <button class="button">=</button>
-  </div>
-  </div>
-<body>
-  
   <script src="script.js"></script>
 </body>
-
 </html>
